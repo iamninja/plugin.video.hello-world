@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings>
+	<setting id="my_bool_setting" type="bool" default="true" label="My Bool Setting" />
+	<setting type="sep" />
+	<setting id="my_text_setting" type="text" default="Some text..." label="My Text Setting" />
+	<setting id="my_ip_address_setting" type="ipaddress" default="127.0.0.1" label="My Ip Address Setting" />
+	<setting id="my_number_setting" type="number" default="2" label="My Number Setting" />
+</settings>

@@ -3,6 +3,16 @@ import urllib
 import urlparse
 import xbmcgui
 import xbmcplugin
+import xbmcaddon
+
+# Retrieve settings
+my_addon = xbmcaddon.Addon()
+my_bool_setting = my_addon.getSetting('my_bool_setting')
+my_text_setting = my_addon.getSetting('my_text_setting')
+my_number_setting = my_addon.getSetting('my_number_setting')
+my_ip_address_setting = my_addon.getSetting('my_ip_address_setting')
+# Set setting
+# my_addon.setSetting('my_number_setting', '5')
 
 base_url = sys.argv[0]
 addon_handle = int(sys.argv[1])
