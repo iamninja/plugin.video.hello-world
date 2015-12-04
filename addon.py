@@ -5,8 +5,9 @@ import xbmcgui
 import xbmcplugin
 import xbmcaddon
 
+my_addon = xbmcaddon.Addon('plugin.video.hello-world')
+
 # Retrieve settings
-my_addon = xbmcaddon.Addon()
 my_bool_setting = my_addon.getSetting('my_bool_setting')
 my_text_setting = my_addon.getSetting('my_text_setting')
 my_number_setting = my_addon.getSetting('my_number_setting')
@@ -28,10 +29,12 @@ mode = args.get('mode', None)
 if mode is None:
 	url = build_url({'mode': 'folder', 'foldername': 'Folder One'})
 	li = xbmcgui.ListItem('Folder One', iconImage="DefaultFolder.png")
+	li.setArt({'fanart': my_addon.getAddonInfo('fanart')})
 	xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=li, isFolder=True)
 
 	url = build_url({'mode': 'folder', 'foldername': 'Folder Two'})
 	li = xbmcgui.ListItem('Folder Two', iconImage="DefaultFolder.png")
+	li.setArt({'fanart': my_addon.getAddonInfo('fanart')})
 	xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=li, isFolder=True)
 
 	xbmcplugin.endOfDirectory(addon_handle)
@@ -39,6 +42,8 @@ if mode is None:
 elif mode[0] == 'folder':
 	foldername = args['foldername'][0]
 	url = 'http://localhost/a-video.mkv'
-	li = xbmcgui.ListItem(foldername + ' Video', iconImage="DefaultVideo.png")
+	li = xbmcgui.ListItem(foldername + ' Video')
+	li.setIconImage(my_addon.getAddonInfo('icon'))
+	li.setArt({'fanart': my_addon.getAddonInfo('fanart')})
 	xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=li)
 	xbmcplugin.endOfDirectory(addon_handle)
